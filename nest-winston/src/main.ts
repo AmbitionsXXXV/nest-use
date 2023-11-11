@@ -1,6 +1,5 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-// import { CusLogger } from './CusLogger.log';
 import { WINSTON_LOGGER_TOKEN } from './winston/winston.module';
 
 async function bootstrap() {
