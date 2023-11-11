@@ -3,30 +3,11 @@ import { createLogger, format, Logger, transports } from 'winston';
 import * as chalk from 'chalk';
 import * as dayjs from 'dayjs';
 
-export class CusLogger implements LoggerService {
+export class CusLoggerV2 implements LoggerService {
   private logger: Logger;
 
-  constructor() {
-    this.logger = createLogger({
-      level: 'debug',
-      format: format.combine(
-        format.colorize(),
-        format.printf(({ context, level, message, time }) => {
-          const appStr = chalk.green(`[NEST]`);
-          const contextStr = chalk.yellow(`[${context}]`);
-
-          return `${appStr} ${time} ${level} ${contextStr} ${message} `;
-        }),
-      ),
-      transports: [
-        new transports.Console(),
-        new transports.File({
-          format: format.combine(format.timestamp(), format.json()),
-          filename: '111.log',
-          dirname: 'log',
-        }),
-      ],
-    });
+  constructor(options) {
+    this.logger = createLogger(options);
   }
 
   log(message: string, context: string) {
