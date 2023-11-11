@@ -1,3 +1,4 @@
 packages:
   - 'redis-nest/**'
   - 'nest-winston/**'
+  - 'nest-jwt/**'
