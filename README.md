@@ -1,6 +1,6 @@
 # Projects
 
-## /nest-winston
+## [nest-winston](https://github.com/AmbitionsXXXV/nest-use/tree/main/nest-winston)
 
 基于 Winston 实现自定义 Logger,使用 printf 自定义保持 nest 原本日志格式，使用 dayjs + chalk 自定义 winston 的日志格式
 
@@ -10,10 +10,10 @@ json 格式打印到 File 日志
 
 得以在应用内随处可以注入自定义的基于 winston 的 CusLogger
 
-## /redis-nest
+## [redis-nest](https://github.com/AmbitionsXXXV/nest-use/tree/main/redis-nest)
 
 Use redis in nest
 
-## /nest-jwt
+## [nest-jwt](https://github.com/AmbitionsXXXV/nest-use/tree/main/nest-jwt)
 
 使用 `typeorm` `@nestjs/jwt` `class-validator` `class-transformer` `mysql2` 等实现的一个简单的带校验规则用户注册登录功能
