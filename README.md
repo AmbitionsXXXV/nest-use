@@ -16,4 +16,4 @@ Use redis in nest
 
 ## /nest-jwt
 
-Use jwt in nest
+使用 `typeorm` `@nestjs/jwt` `class-validator` `class-transformer` `mysql2` 等实现的一个简单的带校验规则用户注册登录功能

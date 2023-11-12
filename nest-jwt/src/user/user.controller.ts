@@ -1,4 +1,4 @@
-import { Body, Controller, Inject, Post, Res } from '@nestjs/common'
+import { Body, Controller, Inject, Post, Res, ValidationPipe } from '@nestjs/common'
 import { JwtService } from '@nestjs/jwt'
 import { Response } from 'express'
 import { LoginUserDto } from './dto/login-user.dto'
@@ -14,7 +14,7 @@ export class UserController {
 
   @Post('login')
   async login(
-    @Body() user: LoginUserDto,
+    @Body(ValidationPipe) user: LoginUserDto,
     @Res({ passthrough: true }) res: Response,
   ) {
     const foundUser = await this.userService.login(user)
@@ -36,7 +36,7 @@ export class UserController {
   }
 
   @Post('register')
-  async register(@Body() user: RegisterUserDto) {
+  async register(@Body(ValidationPipe) user: RegisterUserDto) {
     return await this.userService.register(user)
   }
 }
