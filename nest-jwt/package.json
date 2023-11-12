@@ -18,7 +18,7 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "gen": "nest g guard acl --no-spec --flat"
+    "gen": "nest g guard permission --no-spec --flat"
   },
   "dependencies": {
     "@nestjs/jwt": "^10.2.0",
@@ -29,6 +29,7 @@
     "class-validator": "^0.14.0",
     "express-session": "^1.17.3",
     "mysql2": "^3.6.3",
+    "redis": "^4.6.10",
     "typeorm": "^0.3.17"
   },
   "devDependencies": {

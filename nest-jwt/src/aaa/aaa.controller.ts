@@ -9,6 +9,7 @@ import {
   UseGuards,
 } from '@nestjs/common'
 import { AclGuard } from 'src/acl.guard'
+import { PermissionGuard } from 'src/acl/permission.guard'
 import { AaaService } from './aaa.service'
 import { CreateAaaDto } from './dto/create-aaa.dto'
 import { UpdateAaaDto } from './dto/update-aaa.dto'
@@ -24,7 +25,7 @@ export class AaaController {
   }
 
   @Get()
-  @UseGuards(AclGuard)
+  @UseGuards(AclGuard, PermissionGuard)
   findAll() {
     return this.aaaService.findAll()
   }

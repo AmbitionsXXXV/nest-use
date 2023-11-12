@@ -10,6 +10,19 @@ export class AclService {
   @InjectEntityManager()
   entityManager: EntityManager
 
+  async findByUsername(username: string) {
+    const acl = await this.entityManager.findOne(Acl, {
+      where: {
+        username,
+      },
+      relations: {
+        permissions: true,
+      },
+    })
+
+    return acl
+  }
+
   async login(loginAclDto: LoginAclDto) {
     const acl = await this.entityManager.findOneBy(Acl, {
       username: loginAclDto.username,

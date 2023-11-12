@@ -6,6 +6,7 @@ import {
   Param,
   Patch,
   Post,
+  SetMetadata,
   UseGuards,
 } from '@nestjs/common'
 import { AclGuard } from 'src/acl.guard'
@@ -25,6 +26,7 @@ export class BbbController {
 
   @Get()
   @UseGuards(AclGuard)
+  @SetMetadata('permission', 'query_bbb')
   findAll() {
     return this.bbbService.findAll()
   }
