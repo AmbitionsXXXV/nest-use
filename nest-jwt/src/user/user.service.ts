@@ -2,7 +2,7 @@ import { HttpException, Injectable, Logger } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import * as crypto from 'crypto'
 import { Repository } from 'typeorm'
-import { LoginUserDto } from './dto/longin-user.dto'
+import { LoginUserDto } from './dto/login-user.dto'
 import { RegisterUserDto } from './dto/register-user.dto'
 import { User } from './entities/user.entity'
 
@@ -34,8 +34,7 @@ export class UserService {
       throw new HttpException('密码错误', 200)
     }
 
-    // return foundUser
-    return '登录成功'
+    return foundUser
   }
 
   async register(user: RegisterUserDto) {
