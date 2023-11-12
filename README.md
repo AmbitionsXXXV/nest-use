@@ -17,3 +17,5 @@ Use redis in nest
 ## [nest-jwt](https://github.com/AmbitionsXXXV/nest-use/tree/main/nest-jwt)
 
 使用 `typeorm` `@nestjs/jwt` `class-validator` `class-transformer` `mysql2` 等实现的一个简单的带校验规则用户注册登录功能
+
+参数的校验使用 `ValidationPipe` + `class-validator` 来实现
