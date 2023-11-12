@@ -6,6 +6,7 @@ import {
   Param,
   Patch,
   Post,
+  SetMetadata,
   UseGuards,
 } from '@nestjs/common'
 import { AclGuard } from 'src/acl.guard'
@@ -26,6 +27,7 @@ export class AaaController {
 
   @Get()
   @UseGuards(AclGuard, PermissionGuard)
+  @SetMetadata('permission', 'query_aaa')
   findAll() {
     return this.aaaService.findAll()
   }

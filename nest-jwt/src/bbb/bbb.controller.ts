@@ -10,6 +10,7 @@ import {
   UseGuards,
 } from '@nestjs/common'
 import { AclGuard } from 'src/acl.guard'
+import { PermissionGuard } from 'src/acl/permission.guard'
 import { BbbService } from './bbb.service'
 import { CreateBbbDto } from './dto/create-bbb.dto'
 import { UpdateBbbDto } from './dto/update-bbb.dto'
@@ -25,7 +26,7 @@ export class BbbController {
   }
 
   @Get()
-  @UseGuards(AclGuard)
+  @UseGuards(AclGuard, PermissionGuard)
   @SetMetadata('permission', 'query_bbb')
   findAll() {
     return this.bbbService.findAll()
