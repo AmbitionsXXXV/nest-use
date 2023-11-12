@@ -1,3 +1,4 @@
+import { ValidationPipe } from '@nestjs/common'
 import { NestFactory } from '@nestjs/core'
 import * as session from 'express-session'
 import { AppModule } from './app.module'
@@ -15,6 +16,8 @@ async function bootstrap() {
       saveUninitialized: false,
     }),
   )
+  app.useGlobalPipes(new ValidationPipe())
+
   await app.listen(3000)
 }
 bootstrap()
