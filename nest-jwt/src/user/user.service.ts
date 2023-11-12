@@ -2,6 +2,7 @@ import { HttpException, Injectable, Logger } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import * as crypto from 'crypto'
 import { Repository } from 'typeorm'
+import { LoginUserDto } from './dto/longin-user.dto'
 import { RegisterUserDto } from './dto/register-user.dto'
 import { User } from './entities/user.entity'
 
@@ -19,6 +20,23 @@ export class UserService {
 
   @InjectRepository(User)
   private userRepository: Repository<User>
+
+  async login(user: LoginUserDto) {
+    const foundUser = await this.userRepository.findOneBy({
+      username: user.username,
+    })
+
+    if (!foundUser) {
+      throw new HttpException('用户名不存在', 200)
+    }
+
+    if (foundUser.password !== md5(user.password)) {
+      throw new HttpException('密码错误', 200)
+    }
+
+    // return foundUser
+    return '登录成功'
+  }
 
   async register(user: RegisterUserDto) {
     const foundUser = await this.userRepository.findOneBy({

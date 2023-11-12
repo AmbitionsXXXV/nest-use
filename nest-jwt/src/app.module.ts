@@ -8,24 +8,25 @@ import { UserModule } from './user/user.module'
 
 @Module({
   imports: [
-    // JwtModule.register({
-    //   secret: 'oor',
-    //   signOptions: {
-    //     expiresIn: '7d',
-    //   },
-    // }),
-    JwtModule.registerAsync({
-      async useFactory() {
-        await '10969'
-
-        return {
-          secret: 'oor',
-          signOptions: {
-            expiresIn: '7d',
-          },
-        }
+    JwtModule.register({
+      secret: 'oor',
+      global: true,
+      signOptions: {
+        expiresIn: '7d',
       },
     }),
+    // JwtModule.registerAsync({
+    //   async useFactory() {
+    //     await '10969'
+
+    //     return {
+    //       secret: 'oor',
+    //       signOptions: {
+    //         expiresIn: '7d',
+    //       },
+    //     }
+    //   },
+    // }),
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
