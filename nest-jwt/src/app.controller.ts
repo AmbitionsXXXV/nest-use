@@ -6,10 +6,12 @@ import {
   Res,
   Session,
   UnauthorizedException,
+  UseGuards,
 } from '@nestjs/common'
 import { JwtService } from '@nestjs/jwt'
 import { Response } from 'express'
 import { AppService } from './app.service'
+import { LoginGuard } from './login.guard'
 
 @Controller()
 export class AppController {
@@ -19,6 +21,7 @@ export class AppController {
   private jwtService: JwtService
 
   @Get()
+  @UseGuards(LoginGuard)
   getHello(): string {
     return this.appService.getHello()
   }
