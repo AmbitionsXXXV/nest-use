@@ -8,7 +8,7 @@
     "start": "nest start",
     "clean-dist": "rimraf '*/**/{lib,es,node_modules,dist}'",
     "clean": "pnpm run clean-dist && rimraf node_modules"
-  },
+  },  
   "keywords": [],
   "author": "",
   "license": "ISC",
