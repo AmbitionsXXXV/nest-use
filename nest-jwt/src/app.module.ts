@@ -1,9 +1,29 @@
-import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { Module } from '@nestjs/common'
+import { JwtModule } from '@nestjs/jwt'
+import { AppController } from './app.controller'
+import { AppService } from './app.service'
 
 @Module({
-  imports: [],
+  imports: [
+    // JwtModule.register({
+    //   secret: 'oor',
+    //   signOptions: {
+    //     expiresIn: '7d',
+    //   },
+    // }),
+    JwtModule.registerAsync({
+      async useFactory() {
+        await '10969'
+
+        return {
+          secret: 'oor',
+          signOptions: {
+            expiresIn: '7d',
+          },
+        }
+      },
+    }),
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
