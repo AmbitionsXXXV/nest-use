@@ -20,7 +20,8 @@ export class AaaController {
   constructor(private readonly aaaService: AaaService) {}
 
   @Post()
-  @UseGuards(AclGuard)
+  @UseGuards(AclGuard, PermissionGuard)
+  @SetMetadata('permission', 'create_aaa')
   create(@Body() createAaaDto: CreateAaaDto) {
     return this.aaaService.create(createAaaDto)
   }
