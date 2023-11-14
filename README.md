@@ -21,3 +21,9 @@ Use redis in nest
 参数的校验使用 `ValidationPipe` + `class-validator` 来实现
 
 以及实现 `ACL(Access Control List)`
+
+## [nest-rbac](https://github.com/AmbitionsXXXV/nest-use/tree/main/nest-rbac)
+
+使用 `typeorm` `@nestjs/jwt` `class-validator` `class-transformer` `mysql2` 等实现的一个简单的 `RBAC(Role-Based Access Control)` 权限管理系统
+
+参数的校验使用 `ValidationPipe` + `class-validator` 来实现
