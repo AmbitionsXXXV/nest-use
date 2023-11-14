@@ -43,15 +43,15 @@
     "rimraf": "^5.0.5",
     "typescript": "^5.2.2"
   },
-  "lint-staged": {
-    "*.{ts}": [
-      "eslint --fix",
-      "prettier --write"
-    ]
-  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
     }
+  },
+  "lint-staged": {
+    "*.{js,ts,jsx,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
   }
 }
