@@ -1,34 +1,33 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common'
-import { CreateUserDto } from './dto/create-user.dto'
-import { UpdateUserDto } from './dto/update-user.dto'
+import { Body, Controller, Get, Inject, Post } from '@nestjs/common'
+import { JwtService } from '@nestjs/jwt'
+import { UserLoginDto } from './dto/user-login.dto'
 import { UserService } from './user.service'
 
 @Controller('user')
 export class UserController {
+  @Inject(JwtService)
+  private jwtService: JwtService
+
   constructor(private readonly userService: UserService) {}
 
-  @Post()
-  create(@Body() createUserDto: CreateUserDto) {
-    return this.userService.create(createUserDto)
+  @Get('init')
+  async initData() {
+    await this.userService.initData()
+
+    return 'done'
   }
 
-  @Get()
-  findAll() {
-    return this.userService.findAll()
-  }
+  @Post('login')
+  async login(@Body() loginUser: UserLoginDto) {
+    const user = await this.userService.login(loginUser)
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.userService.findOne(+id)
-  }
+    const token = this.jwtService.sign({
+      user: {
+        username: user.username,
+        roles: user.roles,
+      },
+    })
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-    return this.userService.update(+id, updateUserDto)
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.userService.remove(+id)
+    return { token }
   }
 }
