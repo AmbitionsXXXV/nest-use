@@ -1,9 +1,9 @@
-import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { WinstonModule } from './winston/winston.module';
-import { format, transports } from 'winston';
-import * as chalk from 'chalk';
+import { Module } from '@nestjs/common'
+import * as chalk from 'chalk'
+import { format, transports } from 'winston'
+import { AppController } from './app.controller'
+import { AppService } from './app.service'
+import { WinstonModule } from './winston/winston.module'
 
 @Module({
   imports: [
@@ -12,10 +12,10 @@ import * as chalk from 'chalk';
       format: format.combine(
         format.colorize(),
         format.printf(({ context, level, message, time }) => {
-          const appStr = chalk.green(`[NEST]`);
-          const contextStr = chalk.yellow(`[${context}]`);
+          const appStr = chalk.green(`[NEST]`)
+          const contextStr = chalk.yellow(`[${context}]`)
 
-          return `${appStr} ${time} ${level} ${contextStr} ${message} `;
+          return `${appStr} ${time} ${level} ${contextStr} ${message} `
         }),
       ),
       transports: [

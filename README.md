@@ -27,3 +27,7 @@ Use redis in nest
 使用 `typeorm` `@nestjs/jwt` `class-validator` `class-transformer` `mysql2` 等实现的一个简单的 `RBAC(Role-Based Access Control)` 权限管理系统
 
 参数的校验使用 `ValidationPipe` + `class-validator` 来实现
+
+## [nest-double-token](https://github.com/AmbitionsXXXV/nest-use/tree/main/nest-double-token)
+
+使用 `access-token` `refresh-token` 实现的一个简单的 `JWT` 双令牌认证系统

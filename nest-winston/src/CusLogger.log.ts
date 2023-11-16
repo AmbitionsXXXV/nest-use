@@ -1,10 +1,10 @@
-import { LoggerService } from '@nestjs/common';
-import { createLogger, format, Logger, transports } from 'winston';
-import * as chalk from 'chalk';
-import * as dayjs from 'dayjs';
+import { LoggerService } from '@nestjs/common'
+import * as chalk from 'chalk'
+import * as dayjs from 'dayjs'
+import { createLogger, format, Logger, transports } from 'winston'
 
 export class CusLogger implements LoggerService {
-  private logger: Logger;
+  private logger: Logger
 
   constructor() {
     this.logger = createLogger({
@@ -12,10 +12,10 @@ export class CusLogger implements LoggerService {
       format: format.combine(
         format.colorize(),
         format.printf(({ context, level, message, time }) => {
-          const appStr = chalk.green(`[NEST]`);
-          const contextStr = chalk.yellow(`[${context}]`);
+          const appStr = chalk.green(`[NEST]`)
+          const contextStr = chalk.yellow(`[${context}]`)
 
-          return `${appStr} ${time} ${level} ${contextStr} ${message} `;
+          return `${appStr} ${time} ${level} ${contextStr} ${message} `
         }),
       ),
       transports: [
@@ -26,25 +26,25 @@ export class CusLogger implements LoggerService {
           dirname: 'log',
         }),
       ],
-    });
+    })
   }
 
   log(message: string, context: string) {
-    const time = dayjs(Date.now()).format('YYYY-MM-DD HH:mm:ss');
+    const time = dayjs(Date.now()).format('YYYY-MM-DD HH:mm:ss')
 
-    this.logger.log('info', message, { context, time });
+    this.logger.log('info', message, { context, time })
   }
 
   error(message: string, context: string) {
-    const time = dayjs(Date.now()).format('YYYY-MM-DD HH:mm:ss');
+    const time = dayjs(Date.now()).format('YYYY-MM-DD HH:mm:ss')
 
-    this.logger.log('info', message, { context, time });
+    this.logger.log('info', message, { context, time })
   }
 
   warn(message: string, context: string) {
-    const time = dayjs(Date.now()).format('YYYY-MM-DD HH:mm:ss');
+    const time = dayjs(Date.now()).format('YYYY-MM-DD HH:mm:ss')
 
-    this.logger.log('info', message, { context, time });
+    this.logger.log('info', message, { context, time })
   }
 
   // 使用 nest 自己的 Logger

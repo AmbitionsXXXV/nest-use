@@ -1,8 +1,8 @@
-import { DynamicModule, Global, Module } from '@nestjs/common';
-import { CusLoggerV2 } from './CusLoggerV2.log';
-import { LoggerOptions } from 'winston';
+import { DynamicModule, Global, Module } from '@nestjs/common'
+import { LoggerOptions } from 'winston'
+import { CusLoggerV2 } from './CusLoggerV2.log'
 
-export const WINSTON_LOGGER_TOKEN = 'WINSTON_LOGGER';
+export const WINSTON_LOGGER_TOKEN = 'WINSTON_LOGGER'
 
 @Global()
 @Module({})
@@ -17,6 +17,6 @@ export class WinstonModule {
         },
       ],
       exports: [WINSTON_LOGGER_TOKEN],
-    };
+    }
   }
 }
