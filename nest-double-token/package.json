@@ -18,9 +18,15 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "gen": "nest g resource user --no-spec"
+    "gen": "nest g guard login --flat --no-spec"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@nestjs/jwt": "^10.2.0",
+    "@nestjs/mapped-types": "*",
+    "@nestjs/typeorm": "^10.0.0",
+    "mysql2": "^3.6.3",
+    "typeorm": "^0.3.17"
+  },
   "devDependencies": {
     "jest": "^29.5.0",
     "source-map-support": "^0.5.21",
