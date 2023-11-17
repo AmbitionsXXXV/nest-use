@@ -35,12 +35,13 @@ import { UserModule } from './user/user.module'
     }),
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: 'etc123456',
-      database: 'double-token',
+      host: process.env.MYSQL_HOST,
+      port: parseInt(process.env.MYSQL_PORT),
+      username: process.env.MYSQL_USERNAME,
+      password: process.env.MYSQL_PASSWORD,
+      database: process.env.MYSQL_DATABASE,
       entities: [User],
+      // synchronize 会自动创建表，生产环境不要使用
       synchronize: true,
       logging: true,
       poolSize: 10,
@@ -48,6 +49,8 @@ import { UserModule } from './user/user.module'
       extra: {
         authPlugin: 'sha256_password',
       },
+      // autoLoadEntities 会自动加载实体，不需要再在 entities 中声明
+      // autoLoadEntities: true,
     }),
     UserModule,
   ],
