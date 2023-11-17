@@ -1,0 +1,5 @@
+singer:
+  name: 'aimyon'
+  song: 'マリーゴールド'
+
+db: 'mysql'

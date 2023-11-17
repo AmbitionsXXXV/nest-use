@@ -7,6 +7,7 @@ import {
   Query,
   UnauthorizedException,
 } from '@nestjs/common'
+import { ConfigService } from '@nestjs/config'
 import { JwtService } from '@nestjs/jwt'
 import { LoginUserDto } from './dto/login-user.dto'
 import { UserService } from './user.service'
@@ -16,7 +17,18 @@ export class UserController {
   @Inject(JwtService)
   private jwtService: JwtService
 
+  @Inject(ConfigService)
+  private configService: ConfigService
+
   constructor(private readonly userService: UserService) {}
+
+  @Get()
+  findAll() {
+    return {
+      band: this.configService.get('band'),
+      singer: this.configService.get('singer'),
+    }
+  }
 
   @Post('login')
   async login(@Body() loginUser: LoginUserDto) {
