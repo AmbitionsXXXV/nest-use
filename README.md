@@ -31,3 +31,7 @@ Use redis in nest
 ## [nest-double-token](https://github.com/AmbitionsXXXV/nest-use/tree/main/nest-double-token)
 
 使用 `access-token` `refresh-token` 实现的一个简单的 `JWT` 双令牌认证系统
+
+## [nest-docker-compose](https://github.com/AmbitionsXXXV/nest-use/tree/main/nest-docker-compose)
+
+使用 `docker-compose` 部署 `nest` 项目

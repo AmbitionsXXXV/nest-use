@@ -4,3 +4,4 @@ packages:
   - 'nest-jwt/**'
   - 'nest-rbac/**'
   - 'nest-double-token/**'
+  - 'nest-docker-compose/**'
