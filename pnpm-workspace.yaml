@@ -5,3 +5,4 @@ packages:
   - 'nest-rbac/**'
   - 'nest-double-token/**'
   - 'nest-docker-compose/**'
+  - 'redis-session/**'
